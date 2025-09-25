@@ -21,6 +21,9 @@ class Equipo implements equipo {
     public estado: string
   ) {}
 
+  agregarObservador(sp: soporte) {
+    this.Soporte.push(sp);
+  }
   cambiarEstado(estado: string): void {
     this.estado = estado;
     this.notificar(estado);
@@ -35,3 +38,8 @@ class Equipo implements equipo {
     });
   }
 }
+
+const soporte = new Soporte();
+const equipo = new Equipo("Notebook HP", "Portatil", "disponible");
+equipo.agregarObservador(soporte);
+equipo.cambiarEstado("en reparacion");
